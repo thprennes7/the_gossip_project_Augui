@@ -1,2 +1,8 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<h1>Bienvenue sur notre site The Gossip Project !</h1>
+<p>Les potins les plus récents :</p>
+<% Gossip.all.each_with_index do |potin, index|%>
+<h2>Potin n°<%= index + 1%> de <%= potin.user.first_name%></h2>
+<h3><%= potin.title %></h3>
+<p><%= potin.content %></p>
+<%= link_to "Voir plus", gossip_path(potin.id)%>
+  <% end %>

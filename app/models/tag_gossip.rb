@@ -1,0 +1,2 @@
+class TagGossip < ApplicationRecord
+end

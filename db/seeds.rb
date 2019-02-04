@@ -26,7 +26,7 @@ end
 end
 
 20.times do
-  Gossip.create!(title: Faker::HarryPotter.quote, content: Faker::Lorem.paragraph(50), user_id: User.all.sample.id)
+  Gossip.create!(title: Faker::HarryPotter.location, content: Faker::Lorem.paragraph(50), user_id: User.all.sample.id)
 end
 
 20.times do

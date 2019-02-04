@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'gossip/:id', to: 'shows#gossip', as: 'gossip'
+  get 'profile/:id', to: 'shows#profile', as: 'profile'
   get 'dynamic_pages/welcome'
   root 'static_pages#home'
   get '/team', to: 'static_pages#team'

@@ -4,6 +4,7 @@ FactoryBot.define do
     last_name { "MyString" }
     description { "MyText" }
     email { "MyString" }
+    city_id { City.last.id }
     age { 1 }
   end
 end

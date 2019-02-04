@@ -1,5 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe City, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before(:each) do
+    @city = FactoryBot.create(:city)
+  end
+
+  context "validation" do
+    it "is valid with valid attributes" do
+      expect(@city).to be_a(City)
+      expect(@city).to be_valid
+    end
+
+    it "should return a string" do
+      expect(@city.name).to be_a(String)
+    end
+  end
 end

@@ -9,6 +9,10 @@ class GossipsController < ApplicationController
   def new
   end
 
+  def create
+    Gossip.new_gossip(params)
+  end
+
   def edit
   end
 end

@@ -6,4 +6,12 @@ class User < ApplicationRecord
   has_many :sub_comments
   has_many :likes
   has_many :comments
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email,
+    presence: true,
+    uniqueness: true,
+    format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "Email non valide" }
+  validates :age, presence: true
+  validates :description, presence: true
 end

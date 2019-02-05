@@ -1,6 +1,6 @@
-<div class="container">
-<h1>Bienvenue sur notre site The Gossip Project !</h1>
-<p>Les potins les plus récents :</p>
+<main class="container">
+  <h1>Bienvenue sur notre site The Gossip Project !</h1>
+  <p>Les potins les plus récents :</p>
   <div class="card-deck">
     <% Gossip.all.each_with_index do |potin, index|%>
     <div class="col-3">
@@ -15,4 +15,5 @@
     </div>
     <% end %>
   </div>
-</div>
+  <%= link_to "Créer un nouveau potin", new_gossip_path, :class => "btn btn-primary" %>
+</main>

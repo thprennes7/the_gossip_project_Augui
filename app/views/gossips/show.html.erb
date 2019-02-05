@@ -1,4 +1,4 @@
-<div class="container">
+<main class="container">
   <div class="card">
     <div class="card-body">
       <h2 class="card-title">Potin n° <%= @current_gossip.id %> de <%= link_to "#{@current_gossip.user.first_name}", user_path(@current_gossip.user.id) %></h2>
@@ -7,4 +7,4 @@
       <p class="card-text"><em>Date de création : <%= @current_gossip.created_at.asctime %></em></p>
     </div>
   </div>
-</div>
+</main>

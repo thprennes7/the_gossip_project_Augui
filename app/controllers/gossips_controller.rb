@@ -13,8 +13,10 @@ class GossipsController < ApplicationController
     @gossip = Gossip.new_gossip(params)
 
     if @gossip.save
+      flash[:success] = "Potin enregistré !"
       redirect_to root_path
     else
+      flash[:danger] = "Veuillez remplir correctement les champs."
       render new_gossip_path
     end
   end

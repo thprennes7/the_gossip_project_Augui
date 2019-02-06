@@ -29,6 +29,9 @@
       </div>
     </nav>
   </header>
+  <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
   <%= yield %>
   <footer class="container-fluid w-100 bg-light py-3">
     <div class="container">

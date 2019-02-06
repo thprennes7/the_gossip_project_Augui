@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :city do
-    name { "MyString" }
-    zip_code { "MyString" }
+    name { "testcity" }
+    zip_code { "testzipcode" }
   end
 end

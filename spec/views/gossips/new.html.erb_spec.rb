@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "gossips/new.html.erb", type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "displays h1" do
+    render
+    expect(rendered).to have_content 'Créez un nouveau gossip'
+  end
 end

@@ -10,7 +10,13 @@ class GossipsController < ApplicationController
   end
 
   def create
-    Gossip.new_gossip(params)
+    @gossip = Gossip.new_gossip(params)
+
+    if @gossip.save
+      redirect_to root_path
+    else
+      render new_gossip_path
+    end
   end
 
   def edit

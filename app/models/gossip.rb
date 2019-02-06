@@ -10,6 +10,6 @@ class Gossip < ApplicationRecord
   private
 
   def self.new_gossip(params)
-    Gossip.create(title: params[:title], content: params[:content], user_id: User.last.id)
+    Gossip.new(title: params[:title], content: params[:content], user_id: User.last.id)
   end
 end

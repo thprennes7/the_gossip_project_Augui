@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :gossip do
-    title { "MyString" }
+    title { "figaro" }
     content { "MyText" }
     user_id { User.last.id }
   end

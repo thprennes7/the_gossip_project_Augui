@@ -9,7 +9,8 @@
           <h3 class="card-title">Potin n° <%= potin.id %> de <%= link_to "#{potin.user.first_name}", user_path(potin.user.id) %></h3>
           <h6 class="card-subtitle mb-2 text-muted"><%= potin.title %></h6>
           <p class="card-text"><%= potin.content[0..50] %>...</p>
-          <%=  link_to "Voir plus", gossip_path(potin.id), :class => "card-link" %>
+          <p class="text-muted"><%= "#{potin.comments.length} commentaire#{"s" unless potin.comments.length < 1}" %></p>
+          <%= link_to "Voir plus", gossip_path(potin.id), :class => "card-link" %>
         </div>
       </div>
     </div>

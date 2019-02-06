@@ -23,4 +23,8 @@ class GossipsController < ApplicationController
 
   def edit
   end
+
+  def update
+        
+  end
 end

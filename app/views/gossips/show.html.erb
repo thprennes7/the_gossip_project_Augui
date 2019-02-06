@@ -13,11 +13,14 @@
   <div class="container">
     <% @current_gossip.comments.each do |comment| %>
     <article class="card-body">
-      <h3 class="card-title">Commentaire de <%= comment.user.first_name %></h3>
+      <h3 class="card-title">Commentaire de <%= link_to "#{comment.user.first_name} #{comment.user.last_name}", user_path(comment.user.id) %></h3>
       <p class="card-text" =><%= comment.content %></p>
+      <p><em><%= comment.created_at.asctime %></em></p>
+      <%= link_to "Modifier", edit_gossip_comment_path(@current_gossip.id, comment.id) %>
+      <%= link_to "Supprimer", gossip_comment_path(@current_gossip.id, comment.id), data: { confirm: 'Es-tu sûr(e) ?' }, method: :delete, :class => "text-danger" %>
       <hr>
     </article>
     <% end %>
-    <%= link_to "Commenter", new_gossip_comment_path(@current_gossip), :class => "btn btn-primary"%>
+    <%= link_to "Commenter", new_gossip_comment_path(@current_gossip), :class => "btn btn-primary" %>
   </div>
 </main>

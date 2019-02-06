@@ -7,6 +7,11 @@ class Gossip < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
+  def update(title, content)
+    self[:title] = title
+    self[:content] = content
+  end
+
   private
 
   def self.new_gossip(params)

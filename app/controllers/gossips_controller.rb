@@ -22,9 +22,17 @@ class GossipsController < ApplicationController
   end
 
   def edit
+    @current_gossip = Gossip.find(params[:id])
   end
 
   def update
-        
+    @current_gossip = Gossip.find(params[:id])
+    if @current_gossip.update(params[:title], params[:content])
+      flash[:success] = "Le potin a été mis à jour !"
+      redirect_to @current_gossip
+    else
+      flash[:danger] = "Veuillez remplir correctement les champs."
+      render :edit
+    end
   end
 end

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :gossips, :users, :cities
+  resources :gossips do
+    resources :comments
+  end
+  resources :users, :cities
   get '/team', to: 'static_pages#team'
   get '/contact', to: 'static_pages#contact'
   root 'gossips#index'

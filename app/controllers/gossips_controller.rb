@@ -17,7 +17,7 @@ class GossipsController < ApplicationController
       redirect_to root_path
     else
       flash[:danger] = "Veuillez remplir correctement les champs."
-      render new_gossip_path
+      render :new
     end
   end
 
@@ -27,8 +27,22 @@ class GossipsController < ApplicationController
 
   def update
     @current_gossip = Gossip.find(params[:id])
-    if @current_gossip.update(params[:title], params[:content])
+
+    if @current_gossip.update(title: params[:title], content: params[:content])
       flash[:success] = "Le potin a été mis à jour !"
+      redirect_to @current_gossip
+    else
+      flash[:danger] = "Veuillez remplir correctement les champs."
+      render :edit
+    end
+  end
+
+  def destroy
+    @current_gossip = Gossip.find(params[:id])
+
+
+    if @current_gossip.destroy
+      flash[:success] = "Le potin a été supprimé !"
       redirect_to @current_gossip
     else
       flash[:danger] = "Veuillez remplir correctement les champs."

@@ -5,7 +5,8 @@
       <h6 class="card-subtitle mb-2 text-muted"><%= @current_gossip.title %></h6>
       <p class="card-text"><%= @current_gossip.content %></p>
       <p class="card-text"><em>Date de création : <%= @current_gossip.created_at.asctime %></em></p>
-      <%= link_to "Modifier", edit_gossip_path(@current_gossip.id), :class => "btn btn-primary" %>
+      <%= link_to "Modifier", edit_gossip_path(@current_gossip), :class => "btn btn-primary" %>
+      <%= link_to 'Destroy',  gossip_path(@current_gossip), data: { confirm: 'Are you sure?' }, method: :delete %>
     </div>
   </div>
 </main>

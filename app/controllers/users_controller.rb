@@ -11,7 +11,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password], city_id: params[:city].to_i, age: params[:age], description: params[:description])
+    puts user_params
+    @user = User.new(user_params)
 
     if @user.save
       flash[:success] = "Profil enregistré !"
@@ -27,3 +28,7 @@ class UsersController < ApplicationController
 end
 
 private
+
+def user_params
+  params.permit(:first_name, :last_name, :email, :password, :city_id, :age, :description)
+end

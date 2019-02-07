@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  include SessionsHelper
 
   def new
   end
@@ -6,17 +7,20 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
+      log_in(user)
       flash[:success] = "Bienvenue #{user.first_name}"
       redirect_to root_path
     else
       flash[:danger] = "Email ou mot de passe invalid"
       render :new
     end
-
   end
 
   def destroy
+    if session.delete(:user_id)
+      flash[:success] = "Vous avez été deconnecté"
+      redirect_to root_path
+    end
   end
 
 end

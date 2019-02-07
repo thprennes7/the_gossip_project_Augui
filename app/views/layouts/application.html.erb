@@ -25,22 +25,25 @@
           <li class="nav-item">
             <%= link_to "Contact", contact_path, :class => "nav-link" %>
           </li>
+          <% unless logged_in? %>
           <li class="nav-item">
             <%= link_to "Inscris-toi", new_user_path, :class => "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Connecte-toi", new_session_path, :class => "nav-link" %>
+            <%= link_to "Connecte-toi", new_session_path, :class => "nav-link text-success" %>
           </li>
+          <% else %>
           <li class="nav-item">
-
+            <%= link_to "Déconnexion", session_path(current_user), method: :delete, class: "nav-link text-danger" %>
           </li>
+          <% end %>
         </ul>
       </div>
     </nav>
   </header>
   <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
   <%= yield %>
   <footer class="container-fluid w-100 bg-light py-3">
     <div class="container">

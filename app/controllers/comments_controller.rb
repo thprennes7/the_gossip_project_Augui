@@ -19,13 +19,12 @@ class CommentsController < ApplicationController
   end
 
   def new
-    puts params
     @comment = Comment.new
   end
 
   def create
     @comment = Comment.new_comment(params)
-
+    @comment.user = current_user
     if @comment.save
       flash[:success] = "Commentaire ajouté !"
       redirect_to gossip_path(params[:gossip_id])

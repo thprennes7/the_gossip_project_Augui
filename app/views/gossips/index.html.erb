@@ -2,7 +2,9 @@
   <section class="jumbotron text-center">
     <div class="container">
       <h1 class="jumbotron-heading">Bienvenue sur notre site The Gossip Project !</h1>
+      <% if logged_in? %>
       <%= link_to "Créer un nouveau potin", new_gossip_path, :class => "btn btn-primary" %>
+      <% end %>
     </div>
   </section>
   <section class="album">

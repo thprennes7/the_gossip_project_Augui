@@ -1,6 +1,7 @@
 class GossipsController < ApplicationController
+  
   def index
-    
+
   end
 
   def show
@@ -12,7 +13,7 @@ class GossipsController < ApplicationController
 
   def create
     @gossip = Gossip.new_gossip(params)
-
+    @gossip.user = current_user
     if @gossip.save
       flash[:success] = "Potin enregistré !"
       redirect_to root_path

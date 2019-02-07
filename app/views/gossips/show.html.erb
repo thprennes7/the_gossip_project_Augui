@@ -19,7 +19,8 @@
       <% end %>
       <% end %>
       <% end %>
-      <%= @current_gossip.likes.count  %>
+      <p><%= "#{@current_gossip.likes.count} like#{"s" unless @current_gossip.likes.length < 2}" %></p>
+
       <% if check(@current_gossip.user) %>
       <%= link_to "Modifier", edit_gossip_path(@current_gossip), :class => "btn btn-primary" %>
       <%= link_to 'Supprimer',  gossip_path(@current_gossip), data: { confirm: 'Es-tu sûr(e) ?' }, method: :delete, :class => "text-danger" %>

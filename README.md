@@ -1,24 +1,24 @@
-# README
+# THE GOSSIP PROJECT
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![oggy](https://media.giphy.com/media/1US8fz0jKzpsxxbnhL/giphy.gif)
 
-Things you may want to cover:
+## Bienvenue sur Gossip project l'endroit de tout les potins de THP !
 
-* Ruby version
+Tu peux aller te créer un compte, ensuite :
+* ajouter des potins
+* commenter
+* liker
 
-* System dependencies
+Voici l'adresse : https://the-gossip-project-augui.herokuapp.com/
 
-* Configuration
+Ensuite si l'envie t'en prends tu peux aussi aller checker le programme en faisant simplement :
 
-* Database creation
+`git clone https://github.com/thprennes7/the_gossip_project_Augui`
 
-* Database initialization
+Bien sûr en tant que programmeur aguérit je te passe du fameux :
 
-* How to run the test suite
+`bundle install`
 
-* Services (job queues, cache servers, search engines, etc.)
+Une fois tout ça fait, il te reste plus qu'a nous passé un coups de téléphone.
 
-* Deployment instructions
-
-* ...
+Made with ❤️ by Guillaume, Aurélien.

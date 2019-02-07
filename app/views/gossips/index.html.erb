@@ -11,7 +11,7 @@
     <div class="container">
       <p>Les potins les plus récents :</p>
       <div class="card-deck">
-        <% Gossip.all.each_with_index do |potin, index|%>
+        <% Gossip.all.sort.each_with_index do |potin, index|%>
         <div class="col-3">
           <div class="card mb-4">
             <div class="card-body">

@@ -46,7 +46,7 @@ end
 end
 
 20.times do
-  Like.create!(user_id: User.all.sample.id, gossip_id: Gossip.all.sample.id, comment_id: Comment.all.sample.id)
+  Like.create!(user_id: User.all.sample.id, gossip_id: Gossip.all.sample.id)
 end
 
 20.times do

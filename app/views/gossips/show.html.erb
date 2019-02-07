@@ -1,4 +1,5 @@
 <main class="container">
+
   <article class="card">
     <div class="card-body">
       <h2 class="card-title">Potin n° <%= @current_gossip.id %> de <%= link_to "#{@current_gossip.user.first_name}", user_path(@current_gossip.user.id) %></h2>
@@ -7,38 +8,38 @@
       <p class="card-text"><%= @current_gossip.content %></p>
       <p class="card-text"><em>Date de création : <%= @current_gossip.created_at.asctime %></em></p>
       <% if logged_in? %>
-      <% unless check(@current_gossip.user) %>
-      <% if user_liked?(@current_gossip) %>
-      <%= form_tag gossip_likes_path(@current_gossip.id), method: :post do %>
-      <%= submit_tag "J'aimmmmmmmeee", class: "btn btn-success"%>
-      <% end %>
-      <% else %>
-      <%= form_tag gossip_like_path(@current_gossip.id, find_like(@current_gossip)), method: :delete do %>
-      <%= submit_tag "J'aimmmmmmmeee plus", class: "btn btn-danger"%>
-      <% end %>
-      <% end %>
-      <% end %>
+        <% unless check(@current_gossip.user) %>
+          <% if user_liked?(@current_gossip) %>
+            <%= form_tag gossip_likes_path(@current_gossip.id), method: :post do %>
+              <%= submit_tag "J'aimmmmmmmeee", class: "btn btn-success"%>
+            <% end %>
+          <% else %>
+            <%= form_tag gossip_like_path(@current_gossip.id, find_like(@current_gossip)), method: :delete do %>
+              <%= submit_tag "J'aimmmmmmmeee plus", class: "btn btn-danger"%>
+            <% end %>
+          <% end %>
+        <% end %>
       <% end %>
       <p><%= "#{@current_gossip.likes.count} like#{"s" unless @current_gossip.likes.length < 2}" %></p>
-
       <% if check(@current_gossip.user) %>
-      <%= link_to "Modifier", edit_gossip_path(@current_gossip), :class => "btn btn-primary" %>
-      <%= link_to 'Supprimer',  gossip_path(@current_gossip), data: { confirm: 'Es-tu sûr(e) ?' }, method: :delete, :class => "text-danger" %>
+        <%= link_to "Modifier", edit_gossip_path(@current_gossip), :class => "btn btn-primary" %>
+        <%= link_to 'Supprimer',  gossip_path(@current_gossip), data: { confirm: 'Es-tu sûr(e) ?' }, method: :delete, :class => "text-danger" %>
       <% end %>
     </div>
+
   </article>
   <div class="container">
     <% @current_gossip.comments.sort.each do |comment| %>
-    <article class="card-body">
-      <h3 class="card-title">Commentaire de <%= link_to "#{comment.user.first_name} #{comment.user.last_name}", user_path(comment.user.id) %></h3>
-      <p class="card-text" =><%= comment.content %></p>
-      <p><em><%= comment.created_at.asctime %></em></p>
-      <% if check(comment.user) %>
-      <%= link_to "Modifier", edit_gossip_comment_path(@current_gossip.id, comment.id) %>
-      <%= link_to "Supprimer", gossip_comment_path(@current_gossip.id, comment.id), data: { confirm: 'Es-tu sûr(e) ?' }, method: :delete, :class => "text-danger" %>
-      <% end %>
-      <hr>
-    </article>
+      <article class="card-body">
+        <h3 class="card-title">Commentaire de <%= link_to "#{comment.user.first_name} #{comment.user.last_name}", user_path(comment.user.id) %></h3>
+        <p class="card-text" =><%= comment.content %></p>
+        <p><em><%= comment.created_at.asctime %></em></p>
+          <% if check(comment.user) %>
+            <%= link_to "Modifier", edit_gossip_comment_path(@current_gossip.id, comment.id) %>
+            <%= link_to "Supprimer", gossip_comment_path(@current_gossip.id, comment.id), data: { confirm: 'Es-tu sûr(e) ?' }, method: :delete, :class => "text-danger" %>
+          <% end %>
+        <hr>
+      </article>
     <% end %>
     <%= link_to "Commenter", new_gossip_comment_path(@current_gossip), :class => "btn btn-primary" %>
   </div>

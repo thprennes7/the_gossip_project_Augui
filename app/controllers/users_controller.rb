@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    puts user_params
     @user = User.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password], age: params[:age], city_id: params[:city], description: params[:description])
 
     if @user.save
@@ -25,10 +24,4 @@ class UsersController < ApplicationController
 
   def edit
   end
-end
-
-private
-
-def user_params
-  params.permit(:first_name, :last_name, :email, :password, :city_id, :age, :description)
 end

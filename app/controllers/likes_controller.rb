@@ -7,7 +7,7 @@ include SessionsHelper
     puts like_params
     if @like.save
       flash[:success] = "like accepté"
-      redirect_to show_gossip_path(params[:gossip_id])
+      redirect_to request.referrer
     else
       flash[:danger] = "tu pue"
       redirect_to root_path
@@ -15,6 +15,19 @@ include SessionsHelper
   end
 
   def update
+  end
+
+  def destroy
+    @current_like = Like.find(params[:id])
+
+
+    if @current_like.destroy
+      flash[:success] = "Le like a été supprimé !"
+      redirect_to request.referrer
+    else
+      flash[:danger] = "Erreur."
+      render gossip_path(params[:gossip_id])
+    end
   end
 private
 

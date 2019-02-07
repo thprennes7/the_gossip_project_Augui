@@ -7,11 +7,18 @@
       <p class="card-text"><%= @current_gossip.content %></p>
       <p class="card-text"><em>Date de création : <%= @current_gossip.created_at.asctime %></em></p>
       <% unless check(@current_gossip.user) %>
-      <%= form_tag gossip_likes_path(@current_gossip.id), method: :post do %>
-      <%= submit_tag "J'aimmmmmmmeee", class: "btn btn-success"%>
+        <% if user_liked?(@current_gossip) %>
+          <%= form_tag gossip_likes_path(@current_gossip.id), method: :post do %>
+            <%= submit_tag "J'aimmmmmmmeee", class: "btn btn-success"%>
+          <% end %>
+      <% else %>
+        <%= form_tag gossip_like_path(@current_gossip.id, find_like(@current_gossip)), method: :delete do %>
+          <%= submit_tag "J'aimmmmmmmeee plus", class: "btn btn-danger"%>
+        <% end %>
+      <% end %>
       <% end %>
 
-      <% end %>
+      <%= @current_gossip.likes.count  %>
       <% if check(@current_gossip.user) %>
       <%= link_to "Modifier", edit_gossip_path(@current_gossip), :class => "btn btn-primary" %>
       <%= link_to 'Supprimer',  gossip_path(@current_gossip), data: { confirm: 'Es-tu sûr(e) ?' }, method: :delete, :class => "text-danger" %>
@@ -24,8 +31,6 @@
       <h3 class="card-title">Commentaire de <%= link_to "#{comment.user.first_name} #{comment.user.last_name}", user_path(comment.user.id) %></h3>
       <p class="card-text" =><%= comment.content %></p>
       <p><em><%= comment.created_at.asctime %></em></p>
-      <%# <% unless check(comment.user) %> %>
-      <%# <%= link_to "J'aime", gossip_like_path(@current_gossip.id), method: :create, class= "btn btn-success" %> %>
       <% if check(comment.user) %>
       <%= link_to "Modifier", edit_gossip_comment_path(@current_gossip.id, comment.id) %>
       <%= link_to "Supprimer", gossip_comment_path(@current_gossip.id, comment.id), data: { confirm: 'Es-tu sûr(e) ?' }, method: :delete, :class => "text-danger" %>

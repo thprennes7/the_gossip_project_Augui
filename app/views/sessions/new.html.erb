@@ -7,6 +7,13 @@
     <label for="password">Mot de passe</label>
     <%= password_field_tag 'password', "", class: "form-control" %>
 
+
+    <%= label_tag :remember_me, class: "checkbox inline" do %>
+      <%= check_box_tag :remember_me %>
+      <span>Se souvenir de moi</span>
+    <% end %>
+
+
     <%= submit_tag "Connexion", class: "btn btn-primary" %>
 
   <% end %>
